@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.fontPrimary};
     color: ${props => props.theme.colors.white};
     background-color: ${props => props.theme.colors.background};
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-shadow: ${props => props.theme.shadow.text};
   }
 `;
 
