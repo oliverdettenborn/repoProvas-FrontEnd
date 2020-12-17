@@ -5,6 +5,7 @@ import Input from './Input';
 import Select from './Select';
 import Autocomplete from './Autocomplete';
 import Error from './Error';
+import SelectFilter from './SelectFilter';
 
 
 export {
@@ -15,4 +16,5 @@ export {
   Select,
   Autocomplete,
   Error,
+  SelectFilter
 }
