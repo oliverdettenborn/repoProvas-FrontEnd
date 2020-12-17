@@ -4,6 +4,8 @@ import Nav from './Nav';
 import Input from './Input';
 import Select from './Select';
 import Autocomplete from './Autocomplete';
+import Error from './Error';
+
 
 export {
   Header,
@@ -11,5 +13,6 @@ export {
   Nav,
   Input,
   Select,
-  Autocomplete
+  Autocomplete,
+  Error,
 }

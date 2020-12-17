@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import FormContext from '../../context/FormContext';
-import { Input, Select, Autocomplete, Button } from '../../components';
+import { Input, Select, Autocomplete, Button, Error } from '../../components';
 
 export default function FormToSendTest(props) {
   const { listUniversities, listSubjects, listTeachers, listPeriod, listTypeTest } = useContext(FormContext);
@@ -24,6 +24,7 @@ export default function FormToSendTest(props) {
     disabledButton,
     setDisabledButton,
     submitNewTest,
+    error
   } = props
 
   return (
@@ -89,6 +90,10 @@ export default function FormToSendTest(props) {
       }
       {
         (university !== "" && subject !== "" && teacher !== "" && url !== '') && setDisabledButton(false)
+      }
+
+      {
+        error && <Error>{error}</Error>
       }
       <Button
         type='submit'

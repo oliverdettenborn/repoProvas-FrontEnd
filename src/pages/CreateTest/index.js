@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { postData } from '../../services/api';
 import { Nav } from '../../components';
 import FormToSendTest from './FormToSendTest';
@@ -13,6 +14,8 @@ export default function CreateTest() {
   const [ teacher, setTeacher ] = useState('');
   const [ url, setUrl ] = useState('');
   const [ disabledButton, setDisabledButton ] = useState(true);
+  const [ error, setError ] = useState('');
+  const history = useHistory();
 
   function submitNewTest(e){
     e.preventDefault();
@@ -21,18 +24,24 @@ export default function CreateTest() {
 
     const data = { 
       name,
-      period,
-      typeTest,
-      university: university.id,
-      subject: subject.id,
-      teacher: teacher.id,
+      idPeriod: period,
+      idTypeTest: typeTest,
+      idUniversity: university.id,
+      idSubject: subject.id,
+      idTeacher: teacher.id,
       url 
     }
 
-    console.log(data);
-    //const request = postData('/newTeste', data);
-    //request.then(response => console.log('sucesso'))
-    //request.catch(err => console.log(err))
+    const request = postData('/createTest', data);
+    request.then(() => history.push('/'));
+    request.catch(err => {
+      setDisabledButton(false);
+      if(err.response.status === 422){
+        setError('Preencha os campos corretamente')
+      }else{
+        setError('Algo deu errado tente novamente mais tarde')
+      }
+    })
   }
 
   return (
@@ -56,6 +65,7 @@ export default function CreateTest() {
         disabledButton={disabledButton}
         submitNewTest={submitNewTest}
         setDisabledButton={setDisabledButton}
+        error={error}
       />
     </Container>
   )
