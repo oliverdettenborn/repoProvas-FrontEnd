@@ -26,4 +26,5 @@ const Container = styled.button`
   font-size: ${props => props.theme.fontSizes.small};
   border-radius: ${props => props.theme.border.radius};
   padding: 1%;
+  margin: 10px 0;
 `;

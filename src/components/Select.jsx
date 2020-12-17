@@ -13,11 +13,11 @@ const BootstrapInput = styled(InputBase)`
   font-size: ${props => props.theme.fontSizes.small};
   font-family: ${props => props.theme.fontPrimary};
   width: 100%;
-  height: 45px;
+  height: 50px;
   line-height: 28px;
   color: ${props => props.theme.colors.black};
   border: none;
-  padding-left: 15px;
+  padding: 10px 0 0 11.5px;
   outline: none;
   box-shadow: ${props => props.theme.shadow.box};
 `;
@@ -27,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 120,
     maxWidth: '100%',
     width: '100%',
-    borderRadius: '15px'
+    borderRadius: '15px',
+    marginTop: '10px',
+    marginBottom: '10px'
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -44,12 +46,13 @@ export default function SimpleSelect(props) {
         id="demo-simple-select-filled"
         value={props.value}
         onChange={props.onChange}
+        required
         input={<BootstrapInput />}
       >
         <MenuItem value="">
         </MenuItem>
         {
-          props.options.map(opt => <MenuItem value={opt}>{opt}</MenuItem>)
+          props.options.map(opt => <MenuItem key={opt.id} value={opt.id}>{opt.name}</MenuItem>)
         }
       </Select>
     </FormControl>

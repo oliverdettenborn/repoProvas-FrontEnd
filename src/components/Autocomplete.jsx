@@ -8,8 +8,11 @@ export default function ComboBox(props) {
     <Container
       id="combo-box-demo"
       options={props.options}
-      getOptionLabel={(option) => option}
-      renderInput={(params) => <Text {...params} label={props.label} />}
+      value={props.value}
+      onChange={props.onChange}
+      getOptionLabel={props.getOptionLabel}
+      required
+      renderInput={(params) => <Text {...params} label={props.label} variant="outlined" />}
     />
   );
 }
@@ -20,13 +23,17 @@ const Container = styled(Autocomplete)`
   font-size: ${props => props.theme.fontSizes.small};
   font-family: ${props => props.theme.fontPrimary};
   width: 100%;
-  height: 45px;
+  height: 50px;
   line-height: 28px;
   color: ${props => props.theme.colors.black};
   border: none;
-  padding-left: 15px;
   outline: none;
   box-shadow: ${props => props.theme.shadow.box};
+  margin: 10px 0;
+
+  :focus{
+    outline: transparent
+  }
 `;
 
 const Text = styled(TextField)`
@@ -38,4 +45,7 @@ const Text = styled(TextField)`
   border: none;
   border-color: transparent;
   outline: transparent;
+  :focus{
+    outline: transparent
+  }
 `;
