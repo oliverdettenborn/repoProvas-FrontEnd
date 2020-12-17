@@ -5,6 +5,7 @@ export default function Button(props) {
   return (
     <Container
       {...props}
+      disabled={props.disabledButton}
     >
       {props.children}
     </Container>
@@ -18,7 +19,7 @@ const Container = styled.button`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: ${props => props.theme.colors[props.background]};
+  background-color: ${props => props.disabled ? props.theme.colors.disabled: props.theme.colors[props.background]};
   color: ${props => props.theme.colors[props.color]};
   box-shadow: ${props => props.theme.shadow.box};
   text-shadow: ${props => props.theme.shadow.text};
