@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-export default function Header() {
+export default function Header(props) {
   return (
     <Container>
       <Title>
@@ -10,9 +10,7 @@ export default function Header() {
         <Image src='/favicon.svg' alt="" />
         vas
       </Title>
-      <Description>
-        Um auxilio nos seus estudos, através do compartilhamento das provas da faculdade de forma anônima.
-      </Description>
+      {props.children}
     </Container>
   )
 }
@@ -23,15 +21,6 @@ const Title = styled.h1`
   align-items: center;
   font-family: ${props => props.theme.fontTitle};
   text-shadow: ${props => props.theme.shadow.text};
-`;
-
-const Description = styled.p`
-  font-family: ${props => props.theme.fontPrimary};
-  text-shadow: ${props => props.theme.shadow.text};
-  font-size: ${props => props.theme.fontSizes.descriptions};
-  font-style: italic;
-  text-align: center;
-  margin-top: 25px;
 `;
 
 const Container = styled.header`

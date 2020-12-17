@@ -7,6 +7,7 @@ const value = {
     secondary: "#744EAA",
     background: "#36313D",
     black: "#000",
+    disabled: '#8b8887',
   },
   fontPrimary: "Andika New Basic, sans-serif",
   fontTitle: "Bungee, cursive",
