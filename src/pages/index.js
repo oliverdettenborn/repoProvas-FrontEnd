@@ -1,10 +1,12 @@
 import Homepage from './Homepage';
 import CreateTest from './CreateTest';
-import ViewTests from './ViewTests';
+import ViewTestsByUniversity from './ViewTestsByUniversity';
+import ListUniversities from './ListUniversities';
 
 
 export {
   Homepage,
   CreateTest,
-  ViewTests
+  ViewTestsByUniversity,
+  ListUniversities
 }

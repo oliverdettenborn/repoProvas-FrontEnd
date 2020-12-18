@@ -8,6 +8,7 @@ const value = {
     background: "#36313D",
     black: "#000",
     disabled: '#8b8887',
+    gray: "#8b8887"
   },
   fontPrimary: "Andika New Basic, sans-serif",
   fontTitle: "Bungee, cursive",
@@ -15,7 +16,9 @@ const value = {
     small: "1em",
     medium: "2em",
     large: "3em",
-    descriptions: '0.4em',
+    descriptions: '0.5em',
+    descriptionsLarge: '0.6em',
+    subSmall: '0.8em'
   },
   shadow: {
     box: "0px 4px 4px rgba(0, 0, 0, 0.25)",

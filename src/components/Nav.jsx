@@ -6,7 +6,7 @@ import { Menu, MenuItem } from '@material-ui/core';
 import styled from 'styled-components';
 
 
-export default function Nav() {
+export default function Nav(props) {
   const [ menuIsOpen, setMenuIsOpen ] = useState(false);
   const history = useHistory();
   const { pathname } = useLocation();
@@ -48,6 +48,7 @@ export default function Nav() {
           </MenuItem>
         }
       </Menu>
+      {props.children}
       <Header />
     </Container>
   )
