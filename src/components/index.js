@@ -6,6 +6,8 @@ import Select from './Select';
 import Autocomplete from './Autocomplete';
 import Error from './Error';
 import SelectFilter from './SelectFilter';
+import Spinner from './Spinner';
+
 
 
 export {
@@ -16,5 +18,6 @@ export {
   Select,
   Autocomplete,
   Error,
-  SelectFilter
+  SelectFilter,
+  Spinner
 }

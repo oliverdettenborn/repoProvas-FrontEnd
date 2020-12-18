@@ -1,46 +1,43 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import FormContext from '../../context/FormContext';
+import { device } from '../../assets/mediaQuery';
+
 import { Nav } from '../../components';
-import Filter from './Filter';
-import { FaFilter } from 'react-icons/fa';
+import BoxSubject from './BoxSubject';
 
 export default function CreateTest() {
-  const [ subject, setSubject ] = useState('');
-  const [ teacher, setTeacher ] = useState('');
-  const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const { idUniversity } = useParams();
+  const { listSubjects } = useContext(FormContext);
 
   return (
     <Container>
-      <Nav>
-        <IconFilter onClick={() => setFilterIsOpen(!filterIsOpen)}/>
-      </Nav>
-      {/* {
-        filterIsOpen &&
-        <Filter 
-          university={university}
-          setUniversity={setUniversity}
-          subject={subject}
-          setSubject={setSubject}
-          teacher={teacher}
-          setTeacher={setTeacher}
-          setFilterIsOpen={setFilterIsOpen}
-        />
-      } */}
+      <Nav />
+      {
+        listSubjects
+          .filter(sub => sub.idUniversity === +idUniversity)
+          .map(sub => 
+            <BoxSubject 
+              key={sub.id}
+              idSubject={sub.id}
+              name={sub.name}
+            />
+          )
+      }
     </Container>
   )
 }
 
 const Container = styled.main`
-  margin-top: 120px;
-  width: 80%;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
-`;
+  justify-content: center;
+  flex-direction: column;
+  margin: 120px auto 0 auto;
 
-const IconFilter = styled(FaFilter)`
-  position: absolute;
-  right: 3%;
-  z-index: 5;
-  font-size: ${props => props.theme.fontSizes.medium};
-  color: ${props => props.theme.colors.secondary};
-`
+  @media (${device.tablet}){
+    width: 70%;
+  }
+`;

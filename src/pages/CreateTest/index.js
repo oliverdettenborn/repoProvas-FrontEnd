@@ -32,7 +32,7 @@ export default function CreateTest() {
       url 
     }
 
-    const request = postData('/createTest', data);
+    const request = postData('/tests/create', data);
     request.then(() => history.push('/'));
     request.catch(err => {
       setDisabledButton(false);
