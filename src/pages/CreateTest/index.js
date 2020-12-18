@@ -4,6 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { postData } from '../../services/api';
 import { Nav } from '../../components';
 import FormToSendTest from './FormToSendTest';
+import CreateUniversity from './CreateUniversity';
+import CreateSubject from './CreateSubject';
+import CreateTeacher from './CreateTeacher';
+
 
 export default function CreateTest() {
   const [ name, setName ] = useState('');
@@ -16,6 +20,12 @@ export default function CreateTest() {
   const [ disabledButton, setDisabledButton ] = useState(true);
   const [ error, setError ] = useState('');
   const history = useHistory();
+
+  //states of modals
+  const [ modalUniversityIsOpen, setModalUniversityIsOpen ] = useState(false);
+  const [ modalSubjectIsOpen, setModalSubjectIsOpen ] = useState(false);
+  const [ modalTeacherIsOpen, setModalTeacherIsOpen ] = useState(false);
+
 
   function submitNewTest(e){
     e.preventDefault();
@@ -66,6 +76,21 @@ export default function CreateTest() {
         submitNewTest={submitNewTest}
         setDisabledButton={setDisabledButton}
         error={error}
+        openModalUniversity={setModalUniversityIsOpen}
+        openModalSubject={setModalSubjectIsOpen}
+        openModalTeacher={setModalTeacherIsOpen}
+      />
+      <CreateUniversity 
+        modalUniversityIsOpen={modalUniversityIsOpen}
+        setModalUniversityIsOpen={setModalUniversityIsOpen}
+      />
+      <CreateSubject 
+        modalSubjectIsOpen={modalSubjectIsOpen}
+        setModalSubjectIsOpen={setModalSubjectIsOpen}
+      />
+      <CreateTeacher 
+        modalTeacherIsOpen={modalTeacherIsOpen}
+        setModalTeacherIsOpen={setModalTeacherIsOpen}
       />
     </Container>
   )

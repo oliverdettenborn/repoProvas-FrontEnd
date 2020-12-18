@@ -10,7 +10,7 @@ export function FormProvider(props) {
   const [ listTeachers, setListTeachers ] = useState([]);
   const [ listPeriod, setListPeriod ] = useState([]);
   const [ listTypeTest, setListTypeTest] = useState([]);
-  const [ resfresh, setRefresh ] = useState([]);
+  const [ resfresh, setRefresh ] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export function FormProvider(props) {
     }finally{
       setLoading(false)
     }
-  }, [resfresh])
+  }, [])
 
   return (
     <FormContext.Provider 
@@ -52,6 +52,7 @@ export function FormProvider(props) {
         listTeachers,
         listPeriod,
         listTypeTest,
+        resfresh,
         setRefresh,
         loading
       }}

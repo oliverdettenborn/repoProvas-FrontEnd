@@ -7,7 +7,7 @@ import Autocomplete from './Autocomplete';
 import Error from './Error';
 import SelectFilter from './SelectFilter';
 import Spinner from './Spinner';
-
+import Modal from './Modal';
 
 
 export {
@@ -19,5 +19,6 @@ export {
   Autocomplete,
   Error,
   SelectFilter,
-  Spinner
+  Spinner,
+  Modal
 }

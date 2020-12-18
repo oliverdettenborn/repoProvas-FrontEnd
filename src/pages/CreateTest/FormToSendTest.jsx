@@ -2,9 +2,16 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import FormContext from '../../context/FormContext';
 import { Input, Select, Autocomplete, Button, Error } from '../../components';
+import { MdAddBox } from 'react-icons/md';
 
 export default function FormToSendTest(props) {
-  const { listUniversities, listSubjects, listTeachers, listPeriod, listTypeTest } = useContext(FormContext);
+  const { 
+    listUniversities, 
+    listSubjects, 
+    listTeachers, 
+    listPeriod, 
+    listTypeTest 
+  } = useContext(FormContext);
   
   const {
     name,
@@ -24,7 +31,10 @@ export default function FormToSendTest(props) {
     disabledButton,
     setDisabledButton,
     submitNewTest,
-    error
+    error,
+    openModalUniversity,
+    openModalSubject,
+    openModalTeacher,
   } = props
 
   return (
@@ -49,35 +59,44 @@ export default function FormToSendTest(props) {
       />
       {
         (typeTest !== "") && 
-          <Autocomplete 
-            label='Universidade'
-            options={listUniversities}
-            value={university}
-            getOptionLabel={(option) => option.initial}
-            onChange={(e, newValue) => {
-              setUniversity((newValue === null) ? "" : newValue)
-            }}
-          />
+          <Box>
+              <Autocomplete 
+                label='Universidade'
+                options={listUniversities}
+                value={university}
+                getOptionLabel={(option) => option.initial}
+                onChange={(e, newValue) => {
+                  setUniversity((newValue === null) ? "" : newValue)
+                }}
+              />
+              <MdAddBox size='30px' onClick={() => openModalUniversity(true)} /> 
+          </Box>
       }
       {
         (university !== "") &&
-          <Autocomplete 
-            label='Disciplina'
-            options={listSubjects.filter(s => s.idUniversity === university.id)}
-            value={subject}
-            getOptionLabel={(option) => option.name}
-            onChange={(e, newValue) => setSubject((newValue === null) ? "" : newValue)}
-          />
+          <Box>
+            <Autocomplete 
+              label='Disciplina'
+              options={listSubjects.filter(s => s.idUniversity === university.id)}
+              value={subject}
+              getOptionLabel={(option) => option.name}
+              onChange={(e, newValue) => setSubject((newValue === null) ? "" : newValue)}
+            />
+            <MdAddBox size='30px' onClick={() => openModalSubject(true)} /> 
+          </Box>
       }
       {
         (university !== "" && subject !== "") &&
-        <Autocomplete 
-          label='Professor'
-          options={listTeachers.filter(s => s.idUniversity === university.id && s.idSubject === subject.id)}
-          value={teacher}
-          getOptionLabel={(option) => option.name}
-          onChange={(e, newValue) => setTeacher((newValue === null) ? "" : newValue)}
-        />
+        <Box>
+          <Autocomplete 
+            label='Professor'
+            options={listTeachers.filter(s => s.idUniversity === university.id && s.idSubject === subject.id)}
+            value={teacher}
+            getOptionLabel={(option) => option.name}
+            onChange={(e, newValue) => setTeacher((newValue === null) ? "" : newValue)}
+          />
+          <MdAddBox size='30px' onClick={() => openModalTeacher(true)} /> 
+        </Box>
       }
       {
         (university !== "" && subject !== "" && teacher !== "") &&
@@ -120,4 +139,15 @@ const Container = styled.form`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+const Box = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg{
+    margin-left: 5px;
+  }
 `;
