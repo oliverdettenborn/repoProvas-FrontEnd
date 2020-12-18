@@ -3,8 +3,29 @@ import { FiMenu } from 'react-icons/fi';
 import Header from './Header';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Menu, MenuItem } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
+
+const StyledMenu = withStyles({})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'left',
+    }}
+    anchorPosition={{
+      top: 30,
+      left: 5
+    }}
+    anchorReference={'anchorPosition'}
+    transformOrigin={{
+      vertical: 'top',
+    }}
+    {...props}
+  />
+));
 
 export default function Nav(props) {
   const [ menuIsOpen, setMenuIsOpen ] = useState(false);
@@ -18,7 +39,7 @@ export default function Nav(props) {
         aria-controls="simple-menu" 
         aria-haspopup="true" 
         onClick={() => setMenuIsOpen(true)} />
-      <Menu
+      <StyledMenu
         id="simple-menu"
         anchorEl={menuIsOpen}
         open={menuIsOpen}
@@ -47,8 +68,7 @@ export default function Nav(props) {
             Visualizar provas
           </MenuItem>
         }
-      </Menu>
-      {props.children}
+      </StyledMenu>
       <Header />
     </Container>
   )

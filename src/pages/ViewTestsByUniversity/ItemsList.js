@@ -12,7 +12,6 @@ export default function Item(props) {
     period, 
     typeTest 
   } = props.test
-  console.log(props.test)
 
   return (
     <ItemContainer>
