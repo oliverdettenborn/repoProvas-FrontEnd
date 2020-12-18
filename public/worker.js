@@ -1,4 +1,4 @@
-var CACHE_NAME = 'repoProvas';
+var CACHE_NAME = 'repo_provas';
 var urlsToCache = [
   '/'
 ];
