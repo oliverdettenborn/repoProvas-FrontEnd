@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Nav } from '../../components';
+import { Nav, Spinner } from '../../components';
 import FormContext from '../../context/FormContext';
 import BoxUniversity from './BoxUniversity';
 import { device } from '../../assets/mediaQuery';
 
 export default function ListUniversities() {
-  const { listUniversities } = useContext(FormContext);
+  const { listUniversities, loading } = useContext(FormContext);
+  
 
   return (
     <Container maxWidth="sm">
@@ -15,8 +16,9 @@ export default function ListUniversities() {
         Escolha uma universidade para visualizar as provas:
       </Description>
       <BoxList>
-        {
-          listUniversities.map(u => 
+        {loading 
+          ? <Spinner width='25%' />
+          : listUniversities.map(u => 
             <BoxUniversity 
               key={u.id}
               name={u.initial}

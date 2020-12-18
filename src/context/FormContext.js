@@ -11,31 +11,37 @@ export function FormProvider(props) {
   const [ listPeriod, setListPeriod ] = useState([]);
   const [ listTypeTest, setListTypeTest] = useState([]);
   const [ resfresh, setRefresh ] = useState([]);
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const request = getData('/getAllSchoolsInformations')
     request.then(({ data }) => {
       setListUniversities([...data.universities]);
       setListSubjects([...data.subjects]);
       setListTeachers([...data.teachers]);
+      setLoading(false);
     })
-    request.catch(err => console.log(err))
+    request.catch(() => alert('Ops, tivemos algum erro inesperado, por favor recarrega a página!'))
   }, [resfresh])
 
   useEffect(() => {
-    //getTypeTest and getPeriod
-    const requestTypeTest = getData('/getTypeTest')
-    requestTypeTest.then(({ data }) => {
-      setListTypeTest([...data]);
-    })
-    requestTypeTest.catch(err => console.log(err))
+    setLoading(true);
+    try{
+      const requestTypeTest = getData('/getTypeTest')
+      requestTypeTest.then(({ data }) => {
+        setListTypeTest([...data]);
+      })
 
-    const requestPeriod = getData('/getPeriod')
-    requestPeriod.then(({ data }) => {
-      setListPeriod([...data]);
-    })
-    requestPeriod.catch(err => console.log(err))
+      const requestPeriod = getData('/getPeriod')
+      requestPeriod.then(({ data }) => {
+        setListPeriod([...data]);
+      })
+    }catch{
+      alert('Ops, tivemos algum erro inesperado, por favor recarrega a página!')
+    }finally{
+      setLoading(false)
+    }
   }, [resfresh])
 
   return (
@@ -46,7 +52,8 @@ export function FormProvider(props) {
         listTeachers,
         listPeriod,
         listTypeTest,
-        setRefresh
+        setRefresh,
+        loading
       }}
     >
       {props.children}
