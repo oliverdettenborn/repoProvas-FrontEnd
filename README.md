@@ -4,6 +4,8 @@
 
 # RepoProvas
 
+ ![license](https://img.shields.io/github/license/thaliadettenborn/repoProvas-FrontEnd?style=flat-square) ![total lines](https://img.shields.io/tokei/lines/github/thaliadettenborn/repoProvas-FrontEnd) ![last commit](https://img.shields.io/github/last-commit/thaliadettenborn/repoProvas-FrontEnd?style=flat-square) ![issues](https://img.shields.io/github/package-json/v/thaliadettenborn/repoProvas-FrontEnd?style=flat-square) ![forks](https://img.shields.io/github/forks/thaliadettenborn/repoProvas-FrontEnd?style=flat-square) 
+
 ## About
 <p>
     The RepoProvas is a Progressive Web App with it is a platform for people to share the school tests they have anonymously. This project was developed throughout the Bootcamp of "Respode Aí".
